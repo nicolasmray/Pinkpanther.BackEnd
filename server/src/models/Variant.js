@@ -13,15 +13,19 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      price:{
+      priceEfectivo:{
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      priceCuotas: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       },
       size:{
         type: DataTypes.STRING,
         allowNull: false,
       },
-      quanity: {
+      quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
