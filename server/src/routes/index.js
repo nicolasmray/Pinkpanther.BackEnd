@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const product = require("./product.routes");
-const getProduct = require("../controllers/getProduct");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
