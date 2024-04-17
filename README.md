@@ -57,5 +57,5 @@ Haz commit de tus cambios (git commit -am 'Agrega nueva característica').
 Haz push a la rama (git push origin feature/nueva-caracteristica).
 Crea un nuevo Pull Request.
 
-# Licencia
+
 
