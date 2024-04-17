@@ -17,6 +17,29 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
+    paymentNumber:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    paymentDate:{
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    paymentAmount:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    receiptAmount:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    trackingNumber:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    trackingCourierName: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    }
   });
 };
