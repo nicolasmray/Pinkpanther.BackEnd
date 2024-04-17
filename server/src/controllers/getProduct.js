@@ -2,7 +2,7 @@ const { Variant, Product } = require("../db");
 
 const getProduct = async (req, res) => {
   try {
-    const customer = await Product.findAll({
+    const product = await Product.findAll({
       include: {
         model: Variant,
         attributes: ["id", "name"],
@@ -11,7 +11,7 @@ const getProduct = async (req, res) => {
         },
       },
     });
-    return req.status(200).json(customer);
+    return req.status(200).json(product);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
