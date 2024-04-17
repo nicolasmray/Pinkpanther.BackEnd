@@ -65,6 +65,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    postalCode:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
    
   });
 };
