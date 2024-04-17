@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      suplier:{
+      size:{
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -27,14 +27,6 @@ module.exports = (sequelize) => {
       },
       photo: {
         type: DataTypes.STRING
-      },
-      color:{
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      price:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
       },
       supplier:{
         type: DataTypes.STRING,
