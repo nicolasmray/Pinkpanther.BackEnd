@@ -2,7 +2,7 @@ const { Variant, Product } = require("../db");
 
 const getProduct = async (req, res) => {
   try {
-    const customer = await Product.findAll({
+    const customer = await Product.findOne({
       include: {
         model: Variant,
         attributes: ["id", "name"],
