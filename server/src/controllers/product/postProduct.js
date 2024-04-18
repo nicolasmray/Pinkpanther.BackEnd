@@ -24,4 +24,6 @@ const postProduct = async (req, res) => {
   }
 };
 
+// revisar codigo para usar con get
+
 module.exports = postProduct;
