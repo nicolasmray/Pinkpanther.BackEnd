@@ -53,7 +53,7 @@ Variant.belongsToMany(Product, { through: "VariantProduct" });
 Product.belongsToMany(Variant, { through: "VariantProduct" });
 
 Variant.belongsToMany(Category, { through: "VariantCategory" });
-Category.belongsToMany(Variant, { through: "VariantCategory" })
+Category.belongsToMany(Variant, { through: "VariantCategory" });
 // Product.hasMany(Reviews);
 
 module.exports = {

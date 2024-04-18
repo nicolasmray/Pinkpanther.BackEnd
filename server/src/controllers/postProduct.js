@@ -1,13 +1,17 @@
-const {Product,Variant} = require("../db");
+const {Product,Variant, Category} = require("../db");
 
 const postProduct = async (req,res) => {
 
 try{
- const {name, enable, variants} = req.body
+ const {name, enable, variants, categoryName} = req.body
  console.log('recibo:',name)
 
  const product = await Product.create({
     name,enable
+ })
+
+ const category = await Category.create({
+    categoryName
  })
 
  if (variants && variants.length > 0) {
