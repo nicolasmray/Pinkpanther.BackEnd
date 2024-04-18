@@ -1,4 +1,4 @@
-const { Product, Variant } = require("../db");
+const { Product, Variant } = require("../../db");
 
 const postProduct = async (req, res) => {
   try {

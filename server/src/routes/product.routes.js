@@ -1,7 +1,7 @@
 const { Router } = require("express");
-const getProduct = require("../controllers/getProduct");
-const postProduct = require("../controllers/postProduct");
-const deleteProduct = require("../controllers/deleteProduct");
+const getProduct = require("../controllers/products/getProduct");
+const postProduct = require("../controllers/products/postProduct");
+const deleteProduct = require("../controllers/products/deleteProduct");
 
 const product = Router();
 
