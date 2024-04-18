@@ -1,17 +1,13 @@
-const { Variant, Product } = require("../../db");
+const { Product } = require("../../db");
 
 const getProduct = async (req, res) => {
   try {
-    const customer = await Product.findOne({
-      include: {
-        model: Variant,
-        attributes: ["id"],
-        through: {
-          attributes: [],
-        },
-      },
-    });
-    return res.status(200).json(customer);
+    const { id } = req.params
+    const product = await Product.findByPk(id);
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+    return res.status(200).json(product);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
