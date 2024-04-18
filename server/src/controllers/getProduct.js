@@ -5,7 +5,7 @@ const getProduct = async (req, res) => {
     const product = await Product.findAll({
       include: {
         model: Variant,
-        attributes: ["id", "name"],
+        attributes: ["id"],
         through: {
           attributes: [],
         },
