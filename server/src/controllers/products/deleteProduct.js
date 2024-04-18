@@ -20,7 +20,6 @@ const deleteProduct = async (req, res) => {
     } // si lo encuentra lo destruye
 
     if (findProductToDelete) {
-      // como lo encuentra ?
       return res.status(200).json({
         message: `El producto con ID ${id} ha sido eliminado exitosamente`,
       });

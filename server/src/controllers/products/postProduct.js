@@ -3,7 +3,7 @@ const { Product, Variant } = require("../../db");
 const postProduct = async (req, res) => {
   try {
     const { name, enable, variants } = req.body;
-    console.log("recibo:", name);
+    // console.log("recibo:", name);
 
     const product = await Product.create({
       name,
