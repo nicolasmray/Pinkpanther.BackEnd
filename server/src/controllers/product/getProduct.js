@@ -1,4 +1,4 @@
-const { Variant, Product } = require("../db");
+const { Variant, Product } = require("../../db");
 
 const getProduct = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ const getProduct = async (req, res) => {
         },
       },
     });
-    return req.status(200).json(product);
+    return res.status(200).json(product);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

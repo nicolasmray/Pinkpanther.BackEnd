@@ -18,7 +18,6 @@ const hardcodedProduct = {
 
 const postProduct = async (req, res) => {
   try {
-    // Retorna el producto hardcodeado
     return res.status(200).json(hardcodedProduct);
   } catch (error) {
     return res.status(500).json({ error: error.message });
