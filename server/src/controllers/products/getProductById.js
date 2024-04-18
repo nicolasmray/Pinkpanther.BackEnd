@@ -5,13 +5,13 @@ const getProduct = async (req, res) => {
     const customer = await Product.findOne({
       include: {
         model: Variant,
-        attributes: ["id", "name"],
+        attributes: ["id"],
         through: {
           attributes: [],
         },
       },
     });
-    return req.status(200).json(customer);
+    return res.status(200).json(customer);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
