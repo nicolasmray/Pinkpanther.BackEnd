@@ -13,6 +13,33 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      color:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      priceEfectivo:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      priceCuotas: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      size:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      photo: {
+        type: DataTypes.STRING
+      },
+      supplier:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       enable: {
         type: DataTypes.BOOLEAN,
         allowNull: true,
