@@ -1,6 +1,6 @@
 const { Product } = require("../db");
 
-const deleteProducto = async (req, res) => {
+const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
     if (!id) {
@@ -12,13 +12,15 @@ const deleteProducto = async (req, res) => {
         id: id,
       },
     });
+
     if (!findProductToDelete) {
       throw new Error("No se encontro el producto");
     } else {
       await findProductToDelete.destroy();
-    }
+    } // si lo encuentra lo destruye
 
     if (findProductToDelete) {
+      // como lo encuentra ?
       return res.status(200).json({
         message: `El producto con ID ${id} ha sido eliminado exitosamente`,
       });
