@@ -19,7 +19,9 @@ const putProduct = async (req, res) => {
 
     await product.save();
 
-    return res.status(200).json({ message: "Producto actualizado correctamente", product });
+    return res
+      .status(200)
+      .json({ message: "Producto actualizado correctamente", product });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
