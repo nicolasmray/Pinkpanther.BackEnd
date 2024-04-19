@@ -52,6 +52,8 @@ Cart.belongsToMany(Product, { through: "ProductCart" });
 Order.belongsTo(Cart);
 Cart.hasOne(Order);
 
+Cart.belongsTo(Order);
+Order.hasOne(Cart)
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
