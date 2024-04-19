@@ -6,9 +6,9 @@ const putCustomer = require("../controllers/customer/putCustomer");
 
 const customer = Router();
 
-product.post("/", postCustomer);
-product.get("/", getCustomer);
+customer.post("/", postCustomer);
+customer.get("/", getCustomer);
 //product.delete("/:id", deleteCustomer);
-product.put("/:id", putCustomer);
+customer.put("/:id", putCustomer);
 
 module.exports = customer;
