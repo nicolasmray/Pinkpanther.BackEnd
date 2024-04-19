@@ -34,11 +34,15 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       photo: {
+
         type: DataTypes.STRING,
         allowNull: false
       },
+
       supplier:{
         type: DataTypes.STRING,
+        allowNull: false,
+
       },
       enable: {
         type: DataTypes.BOOLEAN,
