@@ -1,0 +1,63 @@
+{
+  "categorias": [
+    {
+      "nombre": "top",
+      "subcategorias": [
+        "deportivo",
+        "manga larga",
+        "morley",
+        "sublimado red",
+        "largo gofrado",
+        "gofrado"
+      ]
+    },
+    {
+      "nombre": "calza",
+      "subcategorias": [
+        "corta",
+        "capri",
+        "big fine tiro medio",
+        "corta frunce",
+        "corta gofrado",
+        "corta morley",
+        "corta lisa tiro V"
+      ]
+    },
+    {
+      "nombre": "Vestido",
+      "subcategorias": [
+        "Nike con frunce lateral"
+      ]
+    },
+    {
+      "nombre": "remera",
+      "subcategorias": [
+        "manga corta (Adidas y Nike)",
+        "manga corta escote V",
+        "manga super",
+        "manga corta transparencia"
+      ]
+    },
+    {
+      "nombre": "biker",
+      "subcategorias": [
+        "sublimada",
+        "morley"
+      ]
+    },
+    {
+      "nombre": "short",
+      "subcategorias": [
+        "Adidas algodón",
+        "Air Free algodón",
+        "microtul/calza"
+      ]
+    },
+    {
+      "nombre": "falda",
+      "subcategorias": [
+        "pantalón (recta y campana)"
+      ]
+    }
+  ]
+}
