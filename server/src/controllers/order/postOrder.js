@@ -1,27 +1,32 @@
 const { Order } = require("../../db");
 
-const postOrder = async ({
-  orderDate,
-  status,
-  trackingNumber,
-  trackingCourierName,
-  //detailId ? receiptId? trackingId?
-}) => {
-  if (!orderDate || !status || !trackingNumber || !trackingCourierName)
-    throw new Error("Faltan datos");
+const postOrder = async (req, res) => {
+  try {
+    const {
+      orderDate,
+      status,
+      trackingNumber,
+      trackingCourierName,
+      //detailId ? receiptId? trackingId?
+    } = req.body;
 
-  const newOrder = await Order.create({
-    orderDate,
-    status,
-    trackingNumber,
-    trackingCourierName,
-  });
+    if (!orderDate || !status || !trackingNumber || !trackingCourierName)
+      throw new Error("Faltan datos");
 
-  let detail = await getDetail;
+    const order = await Order.create({
+      orderDate,
+      status,
+      trackingNumber,
+      trackingCourierName,
+    });
 
-  console.log(detail);
-  newOrder.addPaymentDetail(detail);
-  return newOrder;
+    return res.status(200).json({
+      message: "Se creó con éxito la orden",
+      order,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = postOrder;
