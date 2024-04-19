@@ -39,6 +39,7 @@ module.exports = (sequelize) => {
       },
       supplier:{
         type: DataTypes.STRING,
+        allowNull: false,
       },
       enable: {
         type: DataTypes.BOOLEAN,
