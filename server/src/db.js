@@ -46,8 +46,8 @@ Cart.belongsToMany(Customer, { through: "CustomerCart" });
 Product.belongsToMany(Cart, { through: "ProductCart" });
 Cart.belongsToMany(Product, { through: "ProductCart" });
 
-Order.belongsTo(Cart, { through: "OrderCart" });
-Cart.hasOne(Order, { through: "OrderCart" });
+Order.belongsTo(Cart);
+Cart.hasOne(Order);
 
 Variant.belongsToMany(Product, { through: "VariantProduct" });
 Product.belongsToMany(Variant, { through: "VariantProduct" });
