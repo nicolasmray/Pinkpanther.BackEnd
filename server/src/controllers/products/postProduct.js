@@ -18,7 +18,6 @@ const postProduct = async (req, res) => {
       });
 
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
-
     } else {
       return res.status(404).json({ massage: "Faltan datos" })
     }

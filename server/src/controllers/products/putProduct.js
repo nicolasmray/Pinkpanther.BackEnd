@@ -1,16 +1,27 @@
-const { editProduct } = require("../../db"); // Importa la función editProduct de Sequelize
+const { Product } = require("../../db");
 
-// Controlador para editar un producto
 const putProduct = async (req, res) => {
-  const productId = req.params.id; // Obtiene el ID del producto de los parámetros de la solicitud
-  const newData = req.body; // Obtiene los nuevos datos del producto del cuerpo de la solicitud
-
   try {
-    const updatedProduct = await editProduct(productId, newData); // Llama a la función editProduct para editar el producto
+    const productId = req.params.id;
+    const newData = req.body;
 
-    res.status(200).json({ success: true, product: updatedProduct });
+    const product = await Product.findByPk(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    for (const key in newData) {
+      if (newData.hasOwnProperty(key)) {
+        product[key] = newData[key];
+      }
+    }
+
+    await product.save();
+
+    return res.status(200).json({ message: "Producto actualizado correctamente", product });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 
