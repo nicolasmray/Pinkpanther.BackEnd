@@ -2,9 +2,7 @@
     "products": [
       {
         "name": "top deportivo",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "5",
         "color": "verde esmeralda",
         "priceEfectivo": 10800,
@@ -14,9 +12,7 @@
       },
       {
         "name": "top deportivo bretel ancho",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "1, 2",
         "color": "marron",
         "priceEfectivo": 10200,
@@ -26,9 +22,7 @@
       },
       {
         "name": "sudadera",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "1",
         "color": "naranja",
         "priceEfectivo": 10800,
@@ -38,9 +32,7 @@
       },
       {
         "name": "remera con manga corta",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "3",
         "color": "negro",
         "priceEfectivo": 12900,
@@ -50,9 +42,7 @@
       },
       {
         "name": "musculosa pupera",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "unico",
         "color": "negro",
         "priceEfectivo": 10200,
@@ -62,9 +52,7 @@
       },
       {
         "name": "top sublimado red",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "3",
         "color": "celeste y verde",
         "priceEfectivo": 16500,
@@ -74,9 +62,7 @@
       },
       {
         "name": "calza corta",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "2",
         "color": "negro",
         "priceEfectivo": 13800,
@@ -86,9 +72,7 @@
       },
       {
         "name": "biker",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "2, 4",
         "color": "sublimado flores",
         "priceEfectivo": 14700,
@@ -98,9 +82,7 @@
       },
       {
         "name": "capri",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "3",
         "color": "fucsia con negro",
         "priceEfectivo": 16500,
@@ -110,9 +92,7 @@
       },
       {
         "name": "falda pantalon recta",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "1, 3",
         "color": "negro",
         "priceEfectivo": 11400,
@@ -122,9 +102,7 @@
       },
       {
         "name": "short algodon",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "1",
         "color": "gris",
         "priceEfectivo": 10200,
@@ -134,9 +112,7 @@
       },    
       {
         "name": "calza larga",
-        "photo": {
-          "url": "https://www.michilenceria.com.ar/post/g652-big.jpg"
-        },
+        "photo": "https://www.michilenceria.com.ar/post/g652-big.jpg",
         "size": "2",
         "color": "bordo",
         "priceEfectivo": 38000,
