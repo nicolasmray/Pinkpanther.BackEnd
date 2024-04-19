@@ -26,7 +26,7 @@ fs.readdirSync(path.join(__dirname, "/models"))
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos
-modelDefiners.forEach((model) => model(sequelize));
+ modelDefiners.forEach((model) => model(sequelize));
 // Capitalizamos los nombres de los modelos ie: product => Product
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [
@@ -52,11 +52,16 @@ Cart.belongsToMany(Product, { through: "ProductCart" });
 Order.belongsToMany(Cart, { through: "OrderCart" });
 Cart.belongsToMany(Order, { through: "OrderCart" });
 
-// Product.hasMany(Reviews);
+Variant.belongsToMany(Product, { through: "VariantProduct" });
+Product.belongsToMany(Variant, { through: "VariantProduct" });
+
+Variant.belongsToMany(Category, { through: "VariantCategory" });
+Category.belongsToMany(Variant, { through: "VariantCategory" });
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
 
-//Probando
+
