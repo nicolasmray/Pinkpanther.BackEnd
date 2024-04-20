@@ -16,15 +16,14 @@ categoryHandler.post('/new', async (req, res) => {
     });
 
 //GET
-categoryHandler.get('/', async(req, res) => {
+categoryHandler.get('/', async (req, res) => {
     try {
-        await getCategories()
-        .then(category => res.status(200).json(category))
+      const categorias = await getCategories();
+      res.status(200).json(categorias); // Devolver la lista de categorías con sus productos asociados
     } catch(error) {
-        res.status(400).json({error:error.message})
+      res.status(400).json({ error: error.message });
     }
-})
-
+  });
 
 categoryHandler.put('/:id', async (req, res) => {
     const { id } = req.params;

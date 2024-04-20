@@ -4,13 +4,18 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-  {
+const sequelize = new Sequelize( `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,{
+    //para trabajar local, comentar
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
-);
+)
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -47,8 +52,8 @@ Cart.belongsToMany(Customer, { through: "CustomerCart" });
 Product.belongsToMany(Cart, { through: "ProductCart" });
 Cart.belongsToMany(Product, { through: "ProductCart" });
 
-Category.hasMany(Product);
-Product.belongsTo(Category);
+Category.hasMany(Product, { foreignKey: "idCategory", as: "products" });
+Product.belongsTo(Category, { foreignKey: "idCategory", as: "products" });
 
 Order.belongsTo(Cart);
 Cart.hasOne(Order);

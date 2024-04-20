@@ -2,9 +2,11 @@ const { Product } = require("../../db");
 
 const postProduct = async (req, res) => {
   try {
-    const { name, color, priceEfectivo, priceCuotas, size, quantity, photo, supplier, enable } = req.body;
+    const { name, color, priceEfectivo, priceCuotas, size, quantity, photo, supplier, enable, idCategory } = req.body;
     console.log("recibo:", name);
-    if(name && color && priceEfectivo && priceCuotas && size && quantity && photo && enable) {
+    console.log(req.body);
+
+    if(name && color && priceEfectivo && priceCuotas && size && quantity && photo && enable &&  idCategory) {
       const product = await Product.create({
         name,
         color,
@@ -15,6 +17,8 @@ const postProduct = async (req, res) => {
         photo,
         supplier,
         enable,
+        idCategory
+        
       });
 
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
