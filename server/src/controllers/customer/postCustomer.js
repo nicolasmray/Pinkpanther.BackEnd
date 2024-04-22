@@ -1,4 +1,5 @@
 const { Customer } = require("../../db.js");
+const { getAuth, createUserWithEmailAndPassword } = require("firebase/auth");
 
 const postCustomer = async (req, res) => {
   try {
@@ -22,12 +23,14 @@ const postCustomer = async (req, res) => {
         postalCode
     } = req.body;
     
+    const auth = getAuth();
+    await createUserWithEmailAndPassword(auth, email, password);
 
     const customer = await Customer.create({
         //id,
         enable, 
         userName, 
-        password, 
+        //password, 
         role, 
         DNI, 
         birthdate, 

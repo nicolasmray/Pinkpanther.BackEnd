@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
+const { auth } = require("./Firebase/firebase.js");
 
 require("./db.js");
 
@@ -22,6 +23,12 @@ server.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+
+// Use Firebase auth middleware
+server.use((req, res, next) => {
+  req.auth = auth;
   next();
 });
 
