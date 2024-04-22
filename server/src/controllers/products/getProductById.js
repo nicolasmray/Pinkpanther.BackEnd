@@ -1,9 +1,11 @@
-const { Product } = require("../../db");
+const { Product, Category } = require("../../db");
 
 const getProduct = async (req, res) => {
   try {
     const { id } = req.params
-    const product = await Product.findByPk(id);
+    const product = await Product.findByPk(id, {
+      include: Category,
+    });
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
