@@ -1,4 +1,4 @@
-const { Customer } = require("../../db.js");
+const { Customer, Cart, Product } = require("../../db.js");
 
 const getCustomer = async (req, res) => {
   try {
@@ -7,7 +7,11 @@ const getCustomer = async (req, res) => {
     const  customer  = await Customer.findOne({
         where: {
             userName: custName
-        }
+        },
+        include: [{
+            model: Cart,
+            include: [Product]
+          }]
     });
     
     if (customer) {
