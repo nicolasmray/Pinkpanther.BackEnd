@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Product } = require("../../db");
+const { Product, Category } = require("../../db");
 
 const getProduct = async (req, res) => {
   try {
@@ -12,13 +12,22 @@ const getProduct = async (req, res) => {
           name: {
             [Op.iLike]: `%${name}%`
           }
+        },
+        include: {
+          model: Category,
+          as: "products"
         }
       });
       if (products.length === 0) {
         return res.status(404).json({ message: "No se encontraron productos que coincidan con el nombre proporcionado" });
       }
     } else {
-      products = await Product.findAll();
+      products = await Product.findAll({
+        include: {
+          model: Category,
+          as: "products"
+        }
+      });
     }
 
     return res.status(200).json(products);
