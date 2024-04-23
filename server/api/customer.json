@@ -1,0 +1,19 @@
+{
+    "id": 123,
+    "enable": true,
+    "userName": "example_username",
+    "password": "example_password",
+    "role": "ADMIN",
+    "DNI": "1234567890",
+    "birthdate": "1990-01-01",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "telephone": "123-456-7890",
+    "country": "United States",
+    "city": "New York",
+    "street": "Broadway",
+    "streetNumber": "123",
+    "apartmentNumber": "Apt 101",
+    "postalCode": "10001"
+  }
