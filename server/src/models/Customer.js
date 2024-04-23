@@ -5,7 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('customer', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      allowNull: false,
       //defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
@@ -13,10 +14,10 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    userName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // userName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     role: {
       type: DataTypes.ENUM('DEV','ADMIN','GUEST', 'CUSTOMER'),
       allowNull: false,
