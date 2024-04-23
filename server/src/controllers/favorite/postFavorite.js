@@ -2,8 +2,10 @@ const { Favorite, Product, Customer } = require('../../db.js');
 
 const postFavorite = async (req, res) => {
   try {
-    const { customer_id, product_id } = req.params;
-    const customer = await Customer.findByPk(customer_id);
+
+    const { id, product_id } = req.params;
+    const customer = await Customer.findByPk(id);
+
     if(!customer) {
       return res.status(404).json({ error: "Cliente no encontrado" });
     }
