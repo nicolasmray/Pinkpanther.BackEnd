@@ -25,11 +25,12 @@ const postCustomer = async (req, res) => {
     
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user
 
     const customer = await Customer.create({
-        //id,
+        id: user.uid,
         enable, 
-        userName, 
+        userName: user.email, 
         //password, 
         role, 
         DNI, 

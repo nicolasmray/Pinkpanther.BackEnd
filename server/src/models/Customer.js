@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('customer', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      type: DataTypes.INTEGER,
+      //defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     enable: {
@@ -17,10 +17,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // password: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     role: {
       type: DataTypes.ENUM('DEV','ADMIN','GUEST', 'CUSTOMER'),
       allowNull: false,
