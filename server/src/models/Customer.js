@@ -6,7 +6,6 @@ module.exports = (sequelize) => {
   sequelize.define('customer', {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
     enable: {
@@ -14,10 +13,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     userName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
