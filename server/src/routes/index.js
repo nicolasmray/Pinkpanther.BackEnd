@@ -8,7 +8,6 @@ const firebase = require("./firebase.routes");
 const payment = require("./payment.routes");
 
 
-
 const router = Router();
 
 router.use('/categories', category);
