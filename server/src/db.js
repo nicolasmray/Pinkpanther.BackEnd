@@ -55,14 +55,14 @@ Cart.belongsToMany(Customer, { through: "CustomerCart" });
 Product.belongsToMany(Cart, { through: "ProductCart" });
 Cart.belongsToMany(Product, { through: "ProductCart" });
 
-Category.hasMany(Product, { foreignKey: "idCategory", as: "products" });
-Product.belongsTo(Category, { foreignKey: "idCategory", as: "products" });
+Category.belongsToMany(Product, { through: "CategoryProduct", });
+Product.belongsToMany(Category, { through: "CategoryProduct",  });
 
-Order.belongsTo(Cart);
-Cart.hasOne(Order);
+Order.belongsToMany(Cart ,{through: "OrderCart"});
+Cart.belongsToMany(Order, {through: "OrderCart"});
 
-Customer.hasMany(Favorite);
-Favorite.belongsTo(Customer);
+Customer.belongsToMany(Favorite, {through: "FavoriteCustomer"});
+Favorite.belongsToMany(Customer , {through: "FavoriteCustomer"});
 
 Product.belongsToMany(Favorite, { through: "productFavorite" });
 Favorite.belongsToMany(Product, { through: "productFavorite" });
