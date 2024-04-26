@@ -21,6 +21,7 @@ const getCategories = async () => {
       include: [{
         model: Product, 
         attributes: ['id', 'name']
+
       }]
     });
     

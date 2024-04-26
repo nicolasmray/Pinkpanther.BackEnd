@@ -1,3 +1,4 @@
+
 const { Product, Category } = require("../../db");
 
 const postProduct = async (req, res) => {
@@ -7,6 +8,7 @@ const postProduct = async (req, res) => {
     console.log(req.body);
 
     if(name && color && priceEfectivo && priceCuotas && size && quantity && photo && enable) {
+
       const product = await Product.create({
         name,
         color,
@@ -24,6 +26,7 @@ const postProduct = async (req, res) => {
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
     } else {
       return res.status(404).json({ massage: "Faltan datos", error })
+
     }
   } catch (error) {
     return res.status(500).json({ error: error.message });
