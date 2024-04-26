@@ -15,7 +15,7 @@ const getProduct = async (req, res) => {
         },
         include: {
           model: Category,
-          as: "products"
+
         }
       });
       if (products.length === 0) {
@@ -25,7 +25,6 @@ const getProduct = async (req, res) => {
       products = await Product.findAll({
         include: {
           model: Category,
-          as: "products"
         }
       });
     }
