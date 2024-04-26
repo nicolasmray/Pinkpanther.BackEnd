@@ -20,7 +20,8 @@ const getCategories = async () => {
     const categories = await Category.findAll({
       include: [{
         model: Product, 
-         attributes: ['id', 'name']
+        attributes: ['id', 'name']
+
       }]
     });
     
