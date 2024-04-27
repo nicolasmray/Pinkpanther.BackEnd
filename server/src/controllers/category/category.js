@@ -20,7 +20,7 @@ const getCategories = async () => {
     const categories = await Category.findAll({
       include: [{
         model: Product, 
-        attributes: ['id', 'name']
+        attributes: ['id', 'name',]
       }]
     });
     
@@ -32,6 +32,7 @@ const getCategories = async () => {
       return {
         id: category.id,
         name: category.name,
+        subcategories: category.subcategories,
         isActive: category.isActive,
         products: category.products ? category.products.map((product) => { // Usa 'category.products' en lugar de 'category.Product'
           return {
