@@ -13,10 +13,10 @@ const getProduct = async (req, res) => {
             [Op.iLike]: `%${name}%`
           }
         },
-        include: {
-          model: Category,
-  
-        }
+        include: [{
+          model: Category, 
+          attributes: ['id', 'name',]
+        }]
       });
       if (products.length === 0) {
         return res.status(404).json({ message: "No se encontraron productos que coincidan con el nombre proporcionado" });
