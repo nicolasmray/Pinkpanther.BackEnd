@@ -61,11 +61,13 @@ Product.belongsToMany(Category, { through: "CategoryProduct",  });
 Order.belongsToMany(Cart ,{through: "OrderCart"});
 Cart.belongsToMany(Order, {through: "OrderCart"});
 
-Customer.belongsToMany(Favorite, {through: "FavoriteCustomer"});
-Favorite.belongsToMany(Customer , {through: "FavoriteCustomer"});
 
-Product.belongsToMany(Favorite, { through: "productFavorite" });
-Favorite.belongsToMany(Product, { through: "productFavorite" });
+// Customer.belongsToMany(Favorite, {through: "FavoriteCustomer"});
+// Favorite.belongsToMany(Customer , {through: "FavoriteCustomer"});
+
+// Product.belongsToMany(Favorite, { through: "ProductFavorite" });
+// Favorite.belongsToMany(Product, { through: "ProductFavorite" });
+
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
