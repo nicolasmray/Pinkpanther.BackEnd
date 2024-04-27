@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
     },
     idfirebase: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     enable: {
       type: DataTypes.BOOLEAN,

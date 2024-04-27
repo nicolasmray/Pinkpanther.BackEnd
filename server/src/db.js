@@ -49,7 +49,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { Customer, Cart, Product, Order, Category, Favorite } = sequelize.models;
 
-
 Customer.belongsToMany(Cart, { through: "CustomerCart" });
 Cart.belongsToMany(Customer, { through: "CustomerCart" });
 
