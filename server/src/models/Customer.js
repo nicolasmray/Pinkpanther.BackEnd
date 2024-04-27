@@ -5,11 +5,13 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('customer', {
     id: {
+      type: DataTypes.UUIDV4,
+      allowNull: false, 
+      primaryKey: true,
+    },
+    idfirebase: {
       type: DataTypes.STRING,
       allowNull: false,
-      //defaultValue: DataTypes.UUIDV4,   
-
-      primaryKey: true,
     },
     enable: {
       type: DataTypes.BOOLEAN,

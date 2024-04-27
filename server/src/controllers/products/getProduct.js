@@ -15,7 +15,6 @@ const getProduct = async (req, res) => {
         },
         include: {
           model: Category,
-
         }
       });
       if (products.length === 0) {
