@@ -4,7 +4,10 @@ const getProduct = async (req, res) => {
   try {
     const { id } = req.params
     const product = await Product.findByPk(id, {
-      include: Category,
+      include: [{
+        model: Category, 
+        attributes: ['id', 'name',]
+      }]
     });
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });

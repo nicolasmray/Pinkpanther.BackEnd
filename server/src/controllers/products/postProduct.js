@@ -3,7 +3,7 @@ const { Product, Category } = require("../../db");
 
 const postProduct = async (req, res) => {
   try {
-    const { name, color, priceEfectivo, priceCuotas, size, quantity, photo, supplier, enable } = req.body;
+    const { name, color, priceEfectivo, priceCuotas, size, quantity, photo, supplier, enable, Categories } = req.body;
     console.log("recibo:", name);
     console.log(req.body);
 
@@ -20,7 +20,7 @@ const postProduct = async (req, res) => {
         enable
       });
 
-      //await product.addCategories(idCategory);
+      await product.addCategories(Categories);
 
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
     } else {
