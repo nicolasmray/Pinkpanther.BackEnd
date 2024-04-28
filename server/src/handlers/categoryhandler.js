@@ -1,4 +1,6 @@
 const { Router } = require("express");
+
+
 const  {createCategory, getCategories, editCategories}  = require('../controllers/category/category');
 const { Category, Product } = require("../db")
 
@@ -23,28 +25,31 @@ categoryHandler.post('/new', async (req, res) => {
     });
 
 //GET
-categoryHandler.get('/', async (req, res) => {
-    try {
-      const categorias = await getCategories();
-      res.status(200).json(categorias); // Devolver la lista de categorías con sus productos asociados
-    } catch(error) {
-      res.status(400).json({ error: error.message });
-    }
-  });
-
-categoryHandler.put('/:id', async (req, res) => {
-    const { id } = req.params;
-    const { name, isActive, subcategories } = req.body;
-
-    try {
-        const updatingCategory = await editCategories(id, { name, isActive, subcategories });
-        res.status(200).json(updatingCategory);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
+categoryHandler.get("/", async (req, res) => {
+  try {
+    const categorias = await getCategories();
+    res.status(200).json(categorias); // Devolver la lista de categorías con sus productos asociados
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
+categoryHandler.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, isActive, subcategories } = req.body;
+
+  try {
+    const updatingCategory = await editCategories(id, {
+      name,
+      isActive,
+      subcategories,
+    });
+    res.status(200).json(updatingCategory);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 module.exports = {
-    categoryHandler
-}
+  categoryHandler,
+};

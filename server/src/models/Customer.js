@@ -1,12 +1,13 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('customer', {
+  sequelize.define("customer", {
     id: {
-      type: DataTypes.UUIDV4,
-      allowNull: false, 
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
     },
     idfirebase: {
@@ -22,10 +23,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM('DEV','ADMIN','GUEST', 'CUSTOMER'),
+      type: DataTypes.ENUM("DEV", "ADMIN", "GUEST", "CUSTOMER"),
       allowNull: false,
     },
-    DNI:{
+    DNI: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -33,31 +34,31 @@ module.exports = (sequelize) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    firstName:{
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName:{
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email:{
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    telephone:{
-    type: DataTypes.STRING,
-      allowNull: false,
-    },
-    country:{
+    telephone: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    city:{
+    country: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    street:{
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    street: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -65,14 +66,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    apartmentNumber:{
+    apartmentNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    postalCode:{
+    postalCode: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-   
   });
 };
