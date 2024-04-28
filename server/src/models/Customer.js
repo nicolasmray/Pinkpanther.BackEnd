@@ -10,10 +10,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
-    idfirebase: {
+    /*idfirebase: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    },*/
     enable: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
