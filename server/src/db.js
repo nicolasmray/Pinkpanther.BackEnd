@@ -4,21 +4,21 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
-// const sequelize = new Sequelize( `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,{
-//     logging: false, // set to console.log to see the raw SQL queries
-//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//   }
-// )
+const sequelize = new Sequelize( `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,{
+      logging: false, // set to console.log to see the raw SQL queries
+      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    }
+  )
 
-// const sequelize = new Sequelize( `${DB_PORT}` )
+/* const sequelize = new Sequelize( `${DB_PORT}` ) */
 
-const sequelize = new Sequelize({
-  dialect: "postgres",
-  host: DB_HOST, // Your database host (provided by Render)
-  username: DB_USER, // Your database username
-  password: DB_PASSWORD, // Your database password
-  database: DB_NAME,
-});
+// const sequelize = new Sequelize({
+//   dialect: 'postgres',
+//   host: DB_HOST, // Your database host (provided by Render)
+//   username: DB_RENDER_USER, // Your database username
+//   password: DB_RENDER_PASSWORD, // Your database password
+//   database: DB_RENDER_NAME,
+// })
 
 const basename = path.basename(__filename);
 
@@ -56,14 +56,14 @@ Cart.belongsToMany(Customer, { through: "CustomerCart" });
 Product.belongsToMany(Cart, { through: "ProductCart" });
 Cart.belongsToMany(Product, { through: "ProductCart" });
 
-Category.hasMany(Product, { foreignKey: "idCategory", as: "products" }); // añade una clave foranea idCategory a la tabla product
-Product.belongsTo(Category, { foreignKey: "idCategory", as: "products" }); // añade una clave foranea idCategory a la tabla category
+Category.belongsToMany(Product, { through: "CategoryProduct", });
+Product.belongsToMany(Category, { through: "CategoryProduct",  });
 
-Cart.hasOne(Order);
-Order.belongsTo(Cart);
+Order.belongsToMany(Cart ,{through: "OrderCart"});
+Cart.belongsToMany(Order, {through: "OrderCart"});
 
-// Customer.hasMany(Favorite);
-// Favorite.belongsTo(Customer);
+Customer.belongsToMany(Favorite, {through: "FavoriteCustomer"});
+Favorite.belongsToMany(Customer , {through: "FavoriteCustomer"});
 
 Product.belongsToMany(Favorite, { through: "productFavorite" });
 Favorite.belongsToMany(Product, { through: "productFavorite" });

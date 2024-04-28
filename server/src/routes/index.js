@@ -6,6 +6,7 @@ const order = require("./order.routes");
 const cart = require("./cart.routes");
 const firebase = require("./firebase.routes");
 const review = require("./review.routes");
+const payment = require("./payment.routes");
 
 const router = Router();
 
@@ -16,5 +17,7 @@ router.use("/order", order);
 router.use("/cart", cart);
 router.use("/firebase", firebase);
 router.use("/review", review);
+router.use('/payment',payment)
+
 
 module.exports = router;

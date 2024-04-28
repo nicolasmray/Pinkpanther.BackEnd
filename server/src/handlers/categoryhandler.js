@@ -1,22 +1,28 @@
 const { Router } = require("express");
-const {
-  createCategory,
-  getCategories,
-  editCategories,
-} = require("../controllers/category/category");
+
+
+const  {createCategory, getCategories, editCategories}  = require('../controllers/category/category');
+const { Category, Product } = require("../db")
 
 const categoryHandler = Router();
-// POST
-categoryHandler.post("/new", async (req, res) => {
-  try {
-    const { name, subcategories } = req.body;
-    const newCategory = await createCategory(name, subcategories);
-    res.status(201).json({ category: newCategory });
-  } catch (error) {
-    console.error("Error al crear la categoría:", error);
-    res.status(500).json({ error: "Error al crear la categoría" });
-  }
-});
+// POST 
+categoryHandler.post('/new', async (req, res) => {
+    try {
+        const { name, subcategories } = req.body;
+        const newCategory = await createCategory(name, subcategories);
+
+        const products = req.body.products;
+        if (products && products.length > 0) {
+          const category = await Category.findByPk(newCategory.id);
+        await category.addProducts(products);
+    }
+
+        res.status(201).json({ category: newCategory });
+      } catch (error) {
+        console.error("Error al crear la categoría:", error);
+        res.status(500).json({ error: "Error al crear la categoría" });
+      }
+    });
 
 //GET
 categoryHandler.get("/", async (req, res) => {
