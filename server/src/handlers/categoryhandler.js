@@ -1,42 +1,38 @@
-const { Router } = require("express");
+/* const { Router } = require("express"); */
 
 
-const  {createCategory, getCategories, editCategories}  = require('../controllers/category/category');
-const { Category, Product } = require("../db")
+/* const  {createCategory, getCategories, editCategories}  = require('../controllers/category/category');
+const { Category, Product } = require("../db") */
 
-const categoryHandler = Router();
-// POST 
+/* const categoryHandler = Router();
 categoryHandler.post('/new', async (req, res) => {
   try {
-    const { name, subcategories, products } = req.body; // Incluir también los productos en la destructuración
+    const { name, subcategories, Products } = req.body;
 
-    // Crear la nueva categoría con sus subcategorías y productos asociados
-    const newCategory = await createCategory(name, subcategories, products);
+    const newCategory = await createCategory(name, subcategories, Products);
 
-    // Enviar la respuesta con la nueva categoría creada
     res.status(201).json({ category: newCategory });
   } catch (error) {
-    // Manejar cualquier error ocurrido durante la creación de la categoría
     console.error("Error al crear la categoría:", error);
     res.status(500).json({ error: "Error al crear la categoría" });
   }
-});
+}); */
 
-//GET
-categoryHandler.get("/", async (req, res) => {
+
+/* categoryHandler.get("/", async (req, res) => {
   try {
     const categorias = await getCategories();
-    res.status(200).json(categorias); // Devolver la lista de categorías con sus productos asociados
+    res.status(200).json(categorias); 
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+}); */
 
-categoryHandler.put("/:id", async (req, res) => {
+/* categoryHandler.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, isActive, subcategories } = req.body;
-
-  try {
+ */
+  /* try {
     const updatingCategory = await editCategories(id, {
       name,
       isActive,
@@ -46,8 +42,8 @@ categoryHandler.put("/:id", async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+}); */
 
-module.exports = {
+/* module.exports = {
   categoryHandler,
-};
+}; */
