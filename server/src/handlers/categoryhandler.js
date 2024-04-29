@@ -7,22 +7,20 @@ const { Category, Product } = require("../db")
 const categoryHandler = Router();
 // POST 
 categoryHandler.post('/new', async (req, res) => {
-    try {
-        const { name, subcategories } = req.body;
-        const newCategory = await createCategory(name, subcategories);
+  try {
+    const { name, subcategories, products } = req.body; // Incluir también los productos en la destructuración
 
-        const products = req.body.products;
-        if (products && products.length > 0) {
-          const category = await Category.findByPk(newCategory.id);
-        await category.addProducts(products);
-    }
+    // Crear la nueva categoría con sus subcategorías y productos asociados
+    const newCategory = await createCategory(name, subcategories, products);
 
-        res.status(201).json({ category: newCategory });
-      } catch (error) {
-        console.error("Error al crear la categoría:", error);
-        res.status(500).json({ error: "Error al crear la categoría" });
-      }
-    });
+    // Enviar la respuesta con la nueva categoría creada
+    res.status(201).json({ category: newCategory });
+  } catch (error) {
+    // Manejar cualquier error ocurrido durante la creación de la categoría
+    console.error("Error al crear la categoría:", error);
+    res.status(500).json({ error: "Error al crear la categoría" });
+  }
+});
 
 //GET
 categoryHandler.get("/", async (req, res) => {
