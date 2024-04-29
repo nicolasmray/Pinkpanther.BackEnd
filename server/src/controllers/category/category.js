@@ -1,4 +1,4 @@
-const { Category, Product } = require('../../db');
+/* const { Category, Product } = require('../../db');
 
 const createCategory = async (name, subcategories, products) => {
   try {
@@ -56,10 +56,9 @@ const editCategories = async (categoryId, categoryData) => {
       const existingCategory = await Category.findByPk(categoryId);
 
       if (!existingCategory) {
-          throw new Error('Category doesnt exist'); // Lanzar un error específico si la categoría no existe
+          throw new Error('Category doesnt exist');
       }
 
-      // Actualizar la categoría con los datos proporcionados
       const updatedCategory = await existingCategory.update(categoryData);
 
       return updatedCategory;
@@ -71,4 +70,4 @@ const editCategories = async (categoryId, categoryData) => {
 
 
 
-module.exports = {createCategory, getCategories, editCategories};
+module.exports = {createCategory, getCategories, editCategories}; */
