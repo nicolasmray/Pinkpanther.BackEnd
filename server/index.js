@@ -27,7 +27,6 @@ const port = PORT
 /* conn.sync({ alter: true }).then(() => { */
   server.listen(port, () => {
     console.log("% listening at " + port); // eslint-disable-line no-console
-
   });
 /* }); */
 

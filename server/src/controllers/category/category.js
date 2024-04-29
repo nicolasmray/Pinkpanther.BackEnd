@@ -1,7 +1,6 @@
 const { Category, Product } = require('../../db');
 
-// Función para crear una categoría con sus subcategorías
-const createCategory = async (name, subcategories) => {
+const createCategory = async (name, subcategories, products) => {
   try {
     const newCategory = await Category.create({
       name,
@@ -9,56 +8,53 @@ const createCategory = async (name, subcategories) => {
       isActive: true,
     });
 
+    if (products && products.length > 0) {
+      const productsToAdd = await Promise.all(products.map(async (product) => {
+        const foundProduct = await Product.findByPk(product.id);
+        return foundProduct;
+      }));
+
+      await newCategory.addProducts(productsToAdd);
+    }
+
     return newCategory;
   } catch (error) {
-    return error.message;
+    console.error("Error al crear la categoría:", error);
+    throw new Error(`Error al crear la categoría: ${error.message}`);
   }
 };
 
 const getCategories = async () => {
   try {
-    const categories = await Category.findAll({
-      include: [{
-        model: Product, 
-        attributes: ['id', 'name',]
-      }]
-    });
-    
-    if (!categories) {
-      return []; // Otra acción para manejar la ausencia de categorías
-    }
+    const categories = await Category.findAll();
+    const categoriesMap = await Promise.all(categories.map(async (category) => {
+      const products = await category.getProducts({ attributes: ['id', 'name'] });
 
-    const categoriesMap = categories.map((category) => {
+      const productsMap = products.map(product => ({
+        id: product.id,
+        name: product.name
+      }));
+
       return {
         id: category.id,
         name: category.name,
         subcategories: category.subcategories,
         isActive: category.isActive,
-        products: category.products ? category.products.map((product) => { // Usa 'category.products' en lugar de 'category.Product'
-          return {
-            id: product.id,
-            name: product.name,
-          };
-        }) : []
+        products: productsMap
       };
-    });
+    }));
 
     return categoriesMap;
   } catch (error) {
-    return error.message;
+    throw new Error(`Error al obtener las categorías: ${error.message}`);
   }
 };
 
 
-
-
-
 const editCategories = async (categoryId, categoryData) => {
   try {
-      // Buscar la categoría por su ID
       const existingCategory = await Category.findByPk(categoryId);
 
-      // Verificar si la categoría existe
       if (!existingCategory) {
           throw new Error('Category doesnt exist'); // Lanzar un error específico si la categoría no existe
       }

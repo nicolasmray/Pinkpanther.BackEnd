@@ -1,4 +1,4 @@
-const { Cart } = require('../../db');
+/*const { Cart } = require('../../db');
 
 const putCart = async (req, res) => {
     const { id } = req.params; // Corrección aquí
@@ -24,3 +24,4 @@ const putCart = async (req, res) => {
 }
 
 module.exports = putCart;
+*/
