@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
     },
     idfirebase: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
     },
     enable: {
       type: DataTypes.BOOLEAN,

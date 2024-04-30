@@ -5,6 +5,7 @@ const { Customer } = require("../../db.js");
 const postCustomer = async (req, res) => {
   try {
     const {
+      idfirebase,  
       enable,
       password,
       role,
@@ -31,6 +32,7 @@ const postCustomer = async (req, res) => {
     const id = uuidv5(email, uuidv5.DNS); // Generamos un UUID basado en el email
     const customer = await Customer.create({
       id,
+      idfirebase,
       enable,
       role,
       DNI,
