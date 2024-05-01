@@ -28,11 +28,11 @@ module.exports = (sequelize) => {
     },
     DNI: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     birthdate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     firstName: {
       type: DataTypes.STRING,
@@ -48,31 +48,31 @@ module.exports = (sequelize) => {
     },
     telephone: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     street: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     streetNumber: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     apartmentNumber: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     postalCode: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };
