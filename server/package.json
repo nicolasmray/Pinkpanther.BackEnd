@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "seed": "nodemon ./src/seed.js"
   },
   "keywords": [],
   "author": "webft47_extra_pf_grupo01",
