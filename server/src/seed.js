@@ -13,7 +13,8 @@ const productsData = [
         "priceEfectivo": 10800,
         "priceCuotas": 14050,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["tops", "new in"]
       },
       {
         "name": "top deportivo bretel ancho",
@@ -23,7 +24,8 @@ const productsData = [
         "priceEfectivo": 10200,
         "priceCuotas": 13280,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["tops"]
       },
       {
         "name": "sudadera",
@@ -33,7 +35,8 @@ const productsData = [
         "priceEfectivo": 10800,
         "priceCuotas": 14050,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["remeras", "sale"]
       },
       {
         "name": "remera con manga corta",
@@ -43,7 +46,8 @@ const productsData = [
         "priceEfectivo": 12900,
         "priceCuotas": 16800,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["remeras"]
       },
       {
         "name": "musculosa pupera",
@@ -53,7 +57,8 @@ const productsData = [
         "priceEfectivo": 10200,
         "priceCuotas": 13280,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["remeras"]
       },
       {
         "name": "top sublimado red",
@@ -63,7 +68,8 @@ const productsData = [
         "priceEfectivo": 16500,
         "priceCuotas": 21450,
         "enable": false,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["tops", "sale"]
       },
       {
         "name": "calza corta",
@@ -73,7 +79,8 @@ const productsData = [
         "priceEfectivo": 13800,
         "priceCuotas": 19950,
         "enable": true,
-        "quantity": "2"
+        "quantity": "2",
+        "Categories": ["calzas", "sale"]
       },
       {
         "name": "biker",
@@ -83,7 +90,8 @@ const productsData = [
         "priceEfectivo": 14700,
         "priceCuotas": 19100,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["calzas"]
       },
       {
         "name": "capri",
@@ -93,7 +101,8 @@ const productsData = [
         "priceEfectivo": 16500,
         "priceCuotas": 21450,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["calzas"]
       },
       {
         "name": "falda pantalon recta",
@@ -103,7 +112,8 @@ const productsData = [
         "priceEfectivo": 11400,
         "priceCuotas": 14850,
         "enable": true,
-        "quantity": "2"
+        "quantity": "2",
+        "Categories": ["falda pantalón", "new in"]
       },
       {
         "name": "short algodon",
@@ -113,7 +123,8 @@ const productsData = [
         "priceEfectivo": 10200,
         "priceCuotas": 13280,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["calzas"]
       },    
       {
         "name": "calza larga",
@@ -123,16 +134,79 @@ const productsData = [
         "priceEfectivo": 38000,
         "priceCuotas": 49400,
         "enable": true,
-        "quantity": "1"
+        "quantity": "1",
+        "Categories": ["calzas", "new in"]
       }
 ]
+
+const categoriesData = [
+      {
+        "name": "calzas",
+        "isActive": true,
+        "subcategories": ["biker", "capri", "corta", "larga"]
+      },
+      {
+        "name": "new in",
+        "isActive": true,
+        "subcategories": ["otoño", "invierno"]
+      },
+      {
+        "name": "tops",
+        "isActive": true,
+        "subcategories": ["bretel ancho", "con tazas", "manga larga", "nike"]
+      },
+      {
+        "name": "sale",
+        "isActive": true,
+        "subcategories": []
+      },
+      {
+        "name": "remeras",
+        "isActive": true,
+        "subcategories": ["musculosas", "remeras", "sudaderas"]
+      },
+      {
+        "name": "falda pantalón",
+        "isActive": true,
+        "subcategories": ["campana", "recta"]
+      },
+      {
+        "name": "conjuntos",
+        "isActive": true,
+        "subcategories": ["cortos", "largos"]
+      },
+      {
+        "name": "about us",
+        "isActive": true,
+        "subcategories": []
+      }
+        
+];
 
 
 async function seedDatabase() {
   try {
-    await sequelize.sync({ alter: true });
-    console.log(`Creando PRODUCTS en HOST ${DB_HOST}, DATABASE ${DB_NAME}`)
-    await Product.bulkCreate(productsData);
+    await sequelize.sync({ force: true });
+    console.log(`Creando PRODUCTS en HOST ${DB_HOST}, DATABASE ${DB_NAME}`);
+    
+    const categoriesMap = {};
+    for (const categoryData of categoriesData) {
+      const category = await Category.create(categoryData);
+      categoriesMap[categoryData.name] = category;
+    }
+
+    for (const productData of productsData) {
+      const product = await Product.create(productData);
+    }
+
+    const products = await Product.findAll();
+    for (const product of products) {
+      const productData = productsData.find(item => item.name === product.name);
+      for (const categoryName of productData.Categories) {
+        const category = categoriesMap[categoryName];
+        await product.addCategory(category);
+      }
+    }
 
     console.log('Datos insertados correctamente en la base de datos.');
   } catch (error) {
