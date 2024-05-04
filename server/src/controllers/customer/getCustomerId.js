@@ -20,7 +20,7 @@ const getCustomerId = async (req, res) => {
             message: "Se encontró el customer:", 
             customer: {
             id: customer.id,
-            idfirebase: customer.id,
+            idfirebase: customer.idfirebase,
             enable: customer.enable,
             userName: customer.userName,
             password: customer.password,
