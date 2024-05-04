@@ -7,7 +7,7 @@ const postOrder = async (req, res) => {
       status,
       trackingNumber,
       trackingCourierName,
-      //detailId ? receiptId? trackingId?
+      customerId,
     } = req.body;
 
     if (!orderDate || !status || !trackingNumber || !trackingCourierName)
@@ -18,6 +18,7 @@ const postOrder = async (req, res) => {
       status,
       trackingNumber,
       trackingCourierName,
+      customerId,
     });
 
     return res.status(200).json({

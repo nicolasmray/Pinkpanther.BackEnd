@@ -3,10 +3,6 @@ const reviewService = require("./reviewService");
 
 const postProductReview = async (req, res) => {
   try {
-    //muy buena
-    // 2
-    // facu
-    // zapatilla
     const { comment, review, customerId, productId } = req.body;
 
     // buscar la review de un producto de un usuario, si tiene la reemplaza, evitando 2 reviews de un usuario en un producto
