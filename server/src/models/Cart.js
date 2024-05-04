@@ -11,15 +11,15 @@ module.exports = (sequelize) => {
     },
     productQuantity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     totalPrice: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     discounts: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   });
 };
