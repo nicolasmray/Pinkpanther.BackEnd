@@ -2,9 +2,7 @@ const { Product, Category } = require("../../db");
 
 const postCategory = async (req, res) => {
   try {
-    const { name, subcategories, isActive, Products } = req.body;
-    console.log("recibo:", name);
-    console.log(req.body);
+    const { name, isActive, subcategories, Products } = req.body;
 
     if(name && subcategories && isActive) {
       const category = await Category.create({
