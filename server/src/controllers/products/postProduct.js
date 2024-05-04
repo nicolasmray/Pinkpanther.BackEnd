@@ -4,8 +4,6 @@ const {ValidationError} = require('sequelize');
 const postProduct = async (req, res) => {
   try {
     const { name, color, priceEfectivo, priceCuotas, size, quantity, photo, supplier, enable, Categories } = req.body;
-    console.log("recibo:", name);
-    console.log(req.body);
 
       const product = await Product.create({
         name,
@@ -18,9 +16,11 @@ const postProduct = async (req, res) => {
         supplier,
         enable
       });
-
-      await product.addCategories(Categories);
-
+      
+      const selectedCategories = await Promise.all(Categories.map(async (c) => await Category.findByPk(c.id)));
+    
+      await product.addCategories(selectedCategories);
+  
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
 
   } catch (error) {
