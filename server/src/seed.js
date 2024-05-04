@@ -14,17 +14,19 @@ const productsData = [
         "priceCuotas": 14050,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["tops", "new in"]
       },
       {
         "name": "top deportivo bretel ancho",
         "photo": "https://acdn.mitiendanube.com/stores/001/137/972/products/7969d381-47fe-4f2a-8007-67f4dda6e5f2-1193a49da20d78f88b17037842097405-1024-1024.jpeg",
-        "size": "1, 2",
+        "size": "2",
         "color": "marron",
         "priceEfectivo": 10200,
         "priceCuotas": 13280,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["tops"]
       },
       {
@@ -36,6 +38,7 @@ const productsData = [
         "priceCuotas": 14050,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["remeras", "sale"]
       },
       {
@@ -47,17 +50,19 @@ const productsData = [
         "priceCuotas": 16800,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["remeras"]
       },
       {
         "name": "musculosa pupera",
         "photo": "https://http2.mlstatic.com/D_NQ_NP_640293-MLA73835424775_012024-O.webp",
-        "size": "unico",
+        "size": "1",
         "color": "negro",
         "priceEfectivo": 10200,
         "priceCuotas": 13280,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["remeras"]
       },
       {
@@ -69,6 +74,7 @@ const productsData = [
         "priceCuotas": 21450,
         "enable": false,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["tops", "sale"]
       },
       {
@@ -80,39 +86,43 @@ const productsData = [
         "priceCuotas": 19950,
         "enable": true,
         "quantity": "2",
+        "supplier": "pink panther",
         "Categories": ["calzas", "sale"]
       },
       {
         "name": "biker",
         "photo": "https://acdn.mitiendanube.com/stores/701/011/products/biker-flores-piopy1-3ec90adb9fbb9bebae16305022914715-640-0.jpg",
-        "size": "2, 4",
+        "size": "2",
         "color": "sublimado flores",
         "priceEfectivo": 14700,
         "priceCuotas": 19100,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["calzas"]
       },
       {
         "name": "capri",
         "photo": "https://www.vandalia.com.ar/media/catalog/product/cache/1/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/8/0/8092_1.jpg",
-        "size": "3",
+        "size": "4",
         "color": "fucsia con negro",
         "priceEfectivo": 16500,
         "priceCuotas": 21450,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["calzas"]
       },
       {
         "name": "falda pantalon recta",
         "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZEnatLhZ_tQ7p_CjxCbu8h5a-IZQIG7jj_eN0RdVwGA&s",
-        "size": "1, 3",
+        "size": "3",
         "color": "negro",
         "priceEfectivo": 11400,
         "priceCuotas": 14850,
         "enable": true,
         "quantity": "2",
+        "supplier": "pink panther",
         "Categories": ["falda pantalón", "new in"]
       },
       {
@@ -124,6 +134,7 @@ const productsData = [
         "priceCuotas": 13280,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["calzas"]
       },    
       {
@@ -135,6 +146,7 @@ const productsData = [
         "priceCuotas": 49400,
         "enable": true,
         "quantity": "1",
+        "supplier": "pink panther",
         "Categories": ["calzas", "new in"]
       }
 ]
