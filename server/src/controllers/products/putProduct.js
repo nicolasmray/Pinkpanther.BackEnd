@@ -11,7 +11,7 @@ const putProduct = async (req, res) => {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
 
-    product.setCategories(req.body.Categories.map(c => {return c.id}))
+    req.body.Categories && product.setCategories(req.body.Categories.map(c => {return c.id}))
     product.save();
     await product.update(req.body);
 
