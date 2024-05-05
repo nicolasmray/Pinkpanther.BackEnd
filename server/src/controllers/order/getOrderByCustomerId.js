@@ -1,4 +1,4 @@
-const { Order } = require("../../db");
+const { Order, Product } = require("../../db");
 
 const getOrderByCustomer = async (req, res) => {
   try {
@@ -7,6 +7,11 @@ const getOrderByCustomer = async (req, res) => {
       where: {
         customerId: custId,
       },
+      include: [
+        {
+          model: Product,
+        },
+      ],
     });
     return res.status(200).json(allOrdersByCustomer);
   } catch (error) {
