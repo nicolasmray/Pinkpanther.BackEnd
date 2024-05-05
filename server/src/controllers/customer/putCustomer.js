@@ -16,7 +16,7 @@ const putCustomer = async (req, res) => {
       return res.status(404).json({ message: "Customer not found" });
     }
     // Update customer properties with values from the request body
-    if (req.body.enable !== undefined) {
+    if (req.body.idfirebase !== undefined) {
       customer.idfirebase = req.body.enable;
     }
     if (req.body.enable !== undefined) {
