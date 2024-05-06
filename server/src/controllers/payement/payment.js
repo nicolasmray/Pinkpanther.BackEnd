@@ -1,5 +1,6 @@
 const {MercadoPagoConfig, Preference } = require ("mercadopago");
 require('dotenv').config();
+const { v5: uuidv5 } = require('uuid');
 
 
 
@@ -9,8 +10,9 @@ const client = new MercadoPagoConfig({
 
 const createPreference = async(req,res) => {
     try{
+        const idempotencykey = req.headers['X-Idempotency-key']
         const body = {
-            itemes: [
+            items: [
                 {
                 title: req.body.title,
                 quantity: Number(req.body.quantity),
@@ -27,10 +29,11 @@ const createPreference = async(req,res) => {
         }
 
         const preference =  new Preference(client);
-        const result = await preference.create({body})
+        const result = await preference.create({body, idempotencykey})
         res.status(200).json({id: result.id,});
     }catch (error){
-        res.status(500).json({ message: "Error al crear el producto" });
+        res.status(500).json({ message: "Error al crear el producto" }, error);
+       console.log(error);
     }
 }
 
