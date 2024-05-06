@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { Customer } = require('../../db');
+require('dotenv').config();
 
 // Configuración del nodemailer
 const transporter = nodemailer.createTransport({
@@ -28,7 +29,7 @@ const registerAndEmail = async (req, res) => {
 
         // Función para enviar el correo electrónico 
         const mailOptions = {
-            from: 'pinkpanther6521@gmail.com' ,
+            from: 'puchetaceleste18@gmail.com' ,
             to: email, 
             subject: '¡Bienvenido a pinkpanther',
             text: `Hola ${name},\n\n¡Bienvenida a PinkPanther!\n\nEstamos emocionados de tenerte como parte de nuestra comunidad.\n\nGracias por unirte a nosotros.\n\nSaludos cordiales,\n\nPinkPanther`
