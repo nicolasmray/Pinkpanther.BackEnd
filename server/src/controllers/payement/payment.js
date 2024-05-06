@@ -21,18 +21,22 @@ const createPreference = async(req,res) => {
                 },
             ],
             back_urls:{
-                succes: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
+                success: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
                 failure: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
                 pending: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
             },
-            auto_return: "aproved"
+            auto_return: "approved"
         }
 
         const preference =  new Preference(client);
         const result = await preference.create({body, idempotencykey})
-        res.status(200).json({id: result.id,});
+        res.status(200).json({idPref: result.sandbox_init_point});
+        console.log({idPref: result.sandbox_init_point})
+        //console.log(result)
     }catch (error){
-        res.status(500).json({ message: "Error al crear el producto" }, error);
+        //res.status(500).json({ message: "Error al crear el producto" }, error);
+        //res.status(status).json(obj);
+
        console.log(error);
     }
 }
