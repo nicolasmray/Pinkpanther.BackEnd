@@ -3,13 +3,14 @@ const { Customer } = require('../../db');
 
 // Configuración del nodemailer
 const transporter = nodemailer.createTransport({
+    port: 587,
+    secure: false,
     service: 'Gmail',
     auth: {
-        user: 'elcorreo@gmail.com',
-        pass: 'contraseña'
+        user: 'sivana361@gmail.com',
+        pass: 'yfxtjntnfwlpmlqu'
     }
 });
-
 const registerAndEmail = async (req, res) => {
     try {
         const { name, email, password, idfirebase, enable, userName, role } = req.body;
@@ -26,7 +27,7 @@ const registerAndEmail = async (req, res) => {
 
         // Función para enviar el correo electrónico 
         const mailOptions = {
-            from: 'elcorreo@gmail.com',
+            from: 'pinkpanther6521@gmail.com' ,
             to: email, 
             subject: '¡Bienvenido a pinkpanther',
             text: `Hola ${name},\n\n¡Bienvenida a PinkPanther!\n\nEstamos emocionados de tenerte como parte de nuestra comunidad.\n\nGracias por unirte a nosotros.\n\nSaludos cordiales,\n\nPinkPanther`
@@ -40,7 +41,7 @@ const registerAndEmail = async (req, res) => {
                 console.log('Correo electrónico enviado exitosamente:', info.response);
             }
         });
-
+        console.log(res)
         
         res.status(201).json(customerDoc);
     } catch (error) {
@@ -49,3 +50,4 @@ const registerAndEmail = async (req, res) => {
 };
 
 module.exports = registerAndEmail;
+
