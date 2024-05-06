@@ -7,8 +7,9 @@ const transporter = nodemailer.createTransport({
     secure: false,
     service: 'Gmail',
     auth: {
-        user: 'sivana361@gmail.com',
-        pass: 'yfxtjntnfwlpmlqu'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+
     }
 });
 const registerAndEmail = async (req, res) => {
