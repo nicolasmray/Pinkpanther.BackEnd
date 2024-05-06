@@ -30,9 +30,9 @@ const createPreference = async(req,res) => {
 
         const preference =  new Preference(client);
         const result = await preference.create({body, idempotencykey})
-        res.status(200).json({idPref: result.sandbox_init_point});
-        console.log({idPref: result.sandbox_init_point})
-        //console.log(result)
+        res.status(200).json({id: result.id});
+        //console.log({idPref: result.sandbox_init_point})
+        console.log(result)
     }catch (error){
         //res.status(500).json({ message: "Error al crear el producto" }, error);
         //res.status(status).json(obj);
