@@ -1,7 +1,7 @@
 const {MercadoPagoConfig, Preference } = require ("mercadopago");
 require('dotenv').config();
 const { v5: uuidv5 } = require('uuid');
-const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com';
+const URL_LINK = "http://localhost:3001";
 
 
 
@@ -9,7 +9,7 @@ const client = new MercadoPagoConfig({
     accessToken: process.env.MP_TOKEN 
 })
 
-const createPreference = async(req,res) => {
+const createWebhook = async(req,res) => {
     try{
         const idempotencykey = req.headers['X-Idempotency-key']
         const body = {
@@ -36,8 +36,7 @@ const createPreference = async(req,res) => {
         const preference =  new Preference(client);
         const result = await preference.create({body, idempotencykey})
         //res.status(200).json({id: result.id});
-        res.status(200).json({init_point: result.init_point}); //este es el que funciona!
-        //res.status(200).json({result});
+        res.status(200).json({init_point: result.init_point});
         //console.log({idPref: result.sandbox_init_point})
         console.log(result)
     }catch (error){
@@ -48,4 +47,4 @@ const createPreference = async(req,res) => {
     }
 }
 
-module.exports = createPreference;
+module.exports = createWebhook;
