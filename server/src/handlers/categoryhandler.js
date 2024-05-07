@@ -1,6 +1,4 @@
 
-
-
 /* const  {createCategory, getCategories, editCategories}  = require('../controllers/category/category');
 const { Category, Product } = require("../db") */
 
@@ -34,6 +32,7 @@ categoryHandler.post('/new', async (req, res) => {
   const { name, isActive, subcategories } = req.body;
  */
   /* try {
+
     const { name, subcategories, products } = req.body; // Incluir también los productos en la destructuración
 
     // Crear la nueva categoría con sus subcategorías y productos asociados
@@ -64,6 +63,7 @@ categoryHandler.put("/:id", async (req, res) => {
 
   try {
 
+
     const updatingCategory = await editCategories(id, {
       name,
       isActive,
@@ -78,6 +78,4 @@ categoryHandler.put("/:id", async (req, res) => {
 /* module.exports = {
   categoryHandler,
 }; */
-
-
 

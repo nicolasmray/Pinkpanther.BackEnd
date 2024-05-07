@@ -35,6 +35,9 @@ module.exports = (sequelize) => {
     },
     photo: {
       type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      },
       allowNull: false,
     },
     supplier: {

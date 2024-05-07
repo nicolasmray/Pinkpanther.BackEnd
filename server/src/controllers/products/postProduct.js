@@ -1,5 +1,6 @@
 
 const { Product, Category } = require("../../db");
+const {ValidationError} = require('sequelize');
 
 const postProduct = async (req, res) => {
   try {
@@ -7,7 +8,6 @@ const postProduct = async (req, res) => {
     console.log("recibo:", name);
     console.log(req.body);
 
-    if(name && color && priceEfectivo && priceCuotas && size && quantity && photo && enable) {
       const product = await Product.create({
         name,
         color,
@@ -23,11 +23,13 @@ const postProduct = async (req, res) => {
       await product.addCategories(Categories);
 
       return res.status(201).json({ message: "Se creó con éxito el producto", product });
-    } else {
-      return res.status(404).json({ massage: "Faltan datos", error })
-    }
+
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    if ( error instanceof ValidationError ) {
+      return res.status(422).json({ error: error.message });
+     } else {
+        throw error;
+    }
   }
 };
 

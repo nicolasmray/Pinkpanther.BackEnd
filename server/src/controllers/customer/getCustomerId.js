@@ -6,7 +6,8 @@ const getCustomerId = async (req, res) => {
     console.log(custId)
     const  customer  = await Customer.findOne({
         where: {
-            id: custId
+            //id: custId
+            idfirebase: custId
         },
         include: [{
             model: Cart,
@@ -19,6 +20,7 @@ const getCustomerId = async (req, res) => {
             message: "Se encontró el customer:", 
             customer: {
             id: customer.id,
+            idfirebase: customer.id,
             enable: customer.enable,
             userName: customer.userName,
             password: customer.password,
