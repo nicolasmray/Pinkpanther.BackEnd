@@ -12,7 +12,7 @@ const client = new MercadoPagoConfig({
 
 const createPreference = async(req,res) => {
     const { cart, idUser, MPproducts} = req.body
-    console.log("req.body:", cart, idUser, MPproducts)
+    //console.log("req.body:", cart, idUser, MPproducts)
     try{
         const idempotencykey = req.headers['X-Idempotency-key']
         const body = {
@@ -40,7 +40,7 @@ const createPreference = async(req,res) => {
         res.status(200).json({init_point: result.init_point}); //este es el que funciona!
         //res.status(200).json({result});
         //console.log({idPref: result.sandbox_init_point})
-        console.log(result)
+        //console.log(result)
     }catch (error){
         //res.status(500).json({ message: "Error al crear el producto" }, error);
         //res.status(status).json(obj);
