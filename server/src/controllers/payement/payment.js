@@ -2,8 +2,8 @@ const {MercadoPagoConfig, Preference } = require ("mercadopago");
 const axios = require('axios');
 require('dotenv').config();
 const { v5: uuidv5 } = require('uuid');
-//const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com';
-const URL_LINK = 'https://d124-181-110-220-41.ngrok-free.app'
+const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com';
+/* const URL_LINK = 'https://d124-181-110-220-41.ngrok-free.app' */
 
 
 const client = new MercadoPagoConfig({
