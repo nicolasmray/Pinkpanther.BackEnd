@@ -2,7 +2,7 @@ const { Cart, Product, Customer } = require('../../db');
 
 const createCart = async (req, res) => {
   try {
-    const { productQuantity, totalPrice, discounts, customerId, productId } = req.body;
+    const { productQuantity, customerId, productId } = req.body;
 
     if (!customerId || customerId === '') {
       return res.status(400).json({ error: "El ID del cliente es requerido" });
@@ -20,8 +20,8 @@ const createCart = async (req, res) => {
 
     const cart = await Cart.create({
       productQuantity,
-      totalPrice,
-      discounts
+      //totalPrice,
+      //discounts
     });
 
     await cart.addCustomer(customer);

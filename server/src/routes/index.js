@@ -7,6 +7,7 @@ const cart = require("./cart.routes");
 const firebase = require("./firebase.routes");
 const review = require("./review.routes");
 const payment = require("./payment.routes");
+const notification = require("./notification.routes");
 
 const router = Router();
 
@@ -18,6 +19,6 @@ router.use("/cart", cart);
 router.use("/firebase", firebase);
 router.use("/review", review);
 router.use('/payment',payment)
-
+router.use('/notification',notification)
 
 module.exports = router;

@@ -4,15 +4,15 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
+/* const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  {
+    logging: true, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  }
+); */
 
-
-const sequelize = new Sequelize( `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,{
-      logging: true, // set to console.log to see the raw SQL queries
-      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-    }
-) 
-
-//const sequelize = new Sequelize( `${DB_PORT}` )
+const sequelize = new Sequelize( `${DB_PORT}` )
 
 
 // const sequelize = new Sequelize({
@@ -59,18 +59,14 @@ Cart.belongsToMany(Customer, { through: "CustomerCart" });
 Product.belongsToMany(Cart, { through: "ProductCart" });
 Cart.belongsToMany(Product, { through: "ProductCart" });
 
-Category.belongsToMany(Product, { through: "CategoryProduct", });
-Product.belongsToMany(Category, { through: "CategoryProduct",  });
+Category.belongsToMany(Product, { through: "CategoryProduct" });
+Product.belongsToMany(Category, { through: "CategoryProduct" });
 
-Order.belongsToMany(Cart ,{through: "OrderCart"});
-Cart.belongsToMany(Order, {through: "OrderCart"});
+Order.belongsToMany(Cart, { through: "OrderCart" });
+Cart.belongsToMany(Order, { through: "OrderCart" });
 
-// Customer.belongsToMany(Favorite, {through: "FavoriteCustomer"});
-// Favorite.belongsToMany(Customer , {through: "FavoriteCustomer"});
-
-// Product.belongsToMany(Favorite, { through: "ProductFavorite" });
-// Favorite.belongsToMany(Product, { through: "ProductFavorite" });
-
+Customer.belongsToMany(Favorite, { through: "FavoriteCustomer" });
+Favorite.belongsToMany(Customer, { through: "FavoriteCustomer" });
 
 Review.belongsTo(Customer, { foreignKey: "customerId" });
 Review.belongsTo(Product, { foreignKey: "productId" });
@@ -78,8 +74,11 @@ Review.belongsTo(Product, { foreignKey: "productId" });
 Review.belongsTo(Customer, { foreignKey: "customerId" });
 Review.belongsTo(Product, { foreignKey: "productId" });
 
-Review.belongsTo(Customer, { foreignKey: "customerId" });
-Review.belongsTo(Product, { foreignKey: "productId" });
+Customer.hasMany(Order, { foreignKey: "customerId" });
+Order.belongsTo(Customer, { foreignKey: "customerId" });
+
+Order.belongsToMany(Product, { through: "OrderProduct" });
+Product.belongsToMany(Order, { through: "OrderProduct" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

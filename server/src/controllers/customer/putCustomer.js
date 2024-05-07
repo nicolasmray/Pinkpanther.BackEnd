@@ -3,10 +3,12 @@ const { Customer } = require("../../db.js");
 const putCustomer = async (req, res) => {
   try {
     // Extract customer ID from the request parameters
-    const customerId = req.params.id;
+    //const customerId = req.params.id;
+    const firebaseId = req.params.id;
 
     // Find the customer by ID
-    const customer = await Customer.findByPk(customerId);
+    //const customer = await Customer.findByPk(customerId);
+    const customer = await Customer.findOne({ where: { idfirebase: firebaseId } });
     console.log(customer)
 
     // If the customer doesn't exist, return a 404 Not Found response
@@ -14,6 +16,9 @@ const putCustomer = async (req, res) => {
       return res.status(404).json({ message: "Customer not found" });
     }
     // Update customer properties with values from the request body
+    if (req.body.idfirebase !== undefined) {
+      customer.idfirebase = req.body.enable;
+    }
     if (req.body.enable !== undefined) {
       customer.enable = req.body.enable;
     }

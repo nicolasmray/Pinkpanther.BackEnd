@@ -4,6 +4,10 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("review", {
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     comment: {
       type: DataTypes.TEXT,
       allowNull: false,

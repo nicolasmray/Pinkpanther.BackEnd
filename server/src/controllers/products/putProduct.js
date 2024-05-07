@@ -3,21 +3,17 @@ const { Product } = require("../../db");
 const putProduct = async (req, res) => {
   try {
     const productId = req.params.id;
-    const newData = req.body;
-
+    console.log("req.body", req.body)
+    console.log("id", productId)
     const product = await Product.findByPk(productId);
 
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
 
-    for (const key in newData) {
-      if (newData.hasOwnProperty(key)) {
-        product[key] = newData[key];
-      }
-    }
-
-    await product.save();
+    req.body.Categories && product.setCategories(req.body.Categories.map(c => {return c.id}))
+    product.save();
+    await product.update(req.body);
 
     return res
       .status(200)
