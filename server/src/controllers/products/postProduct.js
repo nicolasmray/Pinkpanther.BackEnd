@@ -1,3 +1,4 @@
+
 const { Product, Category } = require("../../db");
 const {ValidationError} = require('sequelize');
 
