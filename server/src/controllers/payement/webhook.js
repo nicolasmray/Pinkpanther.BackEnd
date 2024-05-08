@@ -7,6 +7,7 @@ const { v5: uuidv5 } = require('uuid');
 const { URL_LINK } = process.env;
 
 
+
 const client = new MercadoPagoConfig({
     accessToken: process.env.MP_TOKEN 
 })
