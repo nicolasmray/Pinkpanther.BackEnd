@@ -3,8 +3,8 @@ require('dotenv').config();
 const axios = require('axios');
 const { v5: uuidv5 } = require('uuid');
 //const URL_LINK = "http://localhost:3001";
-const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com'; //PEGAR NUEVO LINK DE WEBSERVICE RENDER ACA!
-
+//const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com'; //PEGAR NUEVO LINK DE WEBSERVICE RENDER ACA!
+const { URL_LINK } = process.env;
 
 
 const client = new MercadoPagoConfig({
