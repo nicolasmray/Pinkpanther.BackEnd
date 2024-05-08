@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
+
 // const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false,
@@ -18,6 +19,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
 // });
 
+
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
 //   {
@@ -27,6 +29,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 // );
 
 const sequelize = new Sequelize( `${DB_PORT}` )
+
 
 // const sequelize = new Sequelize({
 //   dialect: 'postgres',
@@ -81,8 +84,8 @@ Cart.belongsToMany(Order, { through: "OrderCart" });
 Customer.belongsToMany(Favorite, { through: "FavoriteCustomer" });
 Favorite.belongsToMany(Customer, { through: "FavoriteCustomer" });
 
-Product.belongsToMany(Favorite, { through: "productFavorite" });
-Favorite.belongsToMany(Product, { through: "productFavorite" });
+Review.belongsTo(Customer, { foreignKey: "customerId" });
+Review.belongsTo(Product, { foreignKey: "productId" });
 
 Review.belongsTo(Customer, { foreignKey: "customerId" });
 Review.belongsTo(Product, { foreignKey: "productId" });
