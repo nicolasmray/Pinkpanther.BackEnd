@@ -2,8 +2,8 @@ const {MercadoPagoConfig, Preference } = require ("mercadopago");
 const axios = require('axios');
 require('dotenv').config();
 const { v5: uuidv5 } = require('uuid');
-const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com';
-/* const URL_LINK = 'https://d124-181-110-220-41.ngrok-free.app' */
+const URL_LINK = 'https://pinkpanther-backend-ip0f.onrender.com'; //PEGAR NUEVO LINK DE WEBSERVICE RENDER ACA!
+//const URL_LINK = 'https://d124-181-110-220-41.ngrok-free.app' 
 
 
 const client = new MercadoPagoConfig({
@@ -26,9 +26,9 @@ const createPreference = async(req,res) => {
                 },
             ],
             back_urls:{
-                success: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
-                failure: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
-                pending: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+                success: "https://pinkpantherfront.vercel.app/",
+                failure: "https://pinkpantherfront.vercel.app/",
+                pending: "https://pinkpantherfront.vercel.app/",
             },
             auto_return: "approved",
             notification_url: `${URL_LINK}/payment/webhook`
