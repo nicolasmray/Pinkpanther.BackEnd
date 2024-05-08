@@ -20,8 +20,9 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const { PORT } = process.env;
-//const port = 3001; 
-//const port = PORT
+/* const port = 3001; */
+const port = PORT
+
 
 // Syncing all the models at once.
 
@@ -31,3 +32,4 @@ const { PORT } = process.env;
     console.log("% listening at " + port); // eslint-disable-line no-console
   });
 //});
+
